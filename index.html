@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mitchell Leyba Cale — Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="layout-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h1 class="profile-name">Mitchell Leyba Cale</h1>
+        <p class="profile-title">Finance & Data Analytics Professional</p>
+      </div>
+      
+      <nav class="nav-menu">
+        <button class="nav-item active" onclick="showSection('home')">
+          <i class="fas fa-home"></i>
+          Home
+        </button>
+        <button class="nav-item" onclick="showSection('education')">
+          <i class="fas fa-graduation-cap"></i>
+          Education
+        </button>
+        <button class="nav-item" onclick="showSection('experience')">
+          <i class="fas fa-briefcase"></i>
+          Experience
+        </button>
+        <button class="nav-item" onclick="showSection('skills')">
+          <i class="fas fa-code"></i>
+          Skills
+        </button>
+        <button class="nav-item" onclick="showSection('contact')">
+          <i class="fas fa-envelope"></i>
+          Contact
+        </button>
+      </nav>
+      
+      <div class="sidebar-footer">
+        <button class="theme-toggle" onclick="toggleTheme()">
+          <i class="fas fa-moon" id="theme-icon"></i>
+          <span id="theme-text">Dark Mode</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="content-wrapper">
+        
+        <!-- Home Section -->
+        <section id="home" class="page-section active">
+          <div class="hero-section">
+            <h1 class="hero-title">Welcome to My Portfolio</h1>
+            <p class="hero-subtitle">Finance & Data Analytics Professional</p>
+            <p class="hero-description">
+              Passionate about leveraging data-driven insights to solve complex business challenges. 
+              With a strong foundation in finance and analytics, I bring both entrepreneurial experience 
+              and technical expertise to every project.
+            </p>
+          </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="page-section">
+          <h2 class="section-title">Education</h2>
+          <div class="card education-card">
+            <h3>BS in Business Administration</h3>
+            <div class="school-name">University of Colorado Boulder - Leeds School of Business</div>
+            <p style="color: var(--text-secondary); margin-bottom: 15px; font-size: 1.1rem;">Emphasis in Finance and Data Analytics</p>
+            
+            <h4 style="color: var(--text-primary); margin-bottom: 15px; font-weight: 600;">Relevant Coursework:</h4>
+            <div class="courses-grid">
+              <div class="course-item">Communication Strategy</div>
+              <div class="course-item">Mathematical Analysis in Business</div>
+              <div class="course-item">Statistical Analysis in Business</div>
+              <div class="course-item">Quantitative Finance</div>
+              <div class="course-item">Data & Information Management</div>
+              <div class="course-item">Business Ethics & Social Responsibility</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="page-section">
+          <h2 class="section-title">Experience</h2>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-date">2020 - 2023</div>
+              <div class="timeline-title">Business Owner</div>
+              <div class="timeline-company">Lawn Care Services • Arvada, Colorado</div>
+              <div class="timeline-description">
+                Founded and operated a successful lawn care service business serving the Arvada, Lakewood, and Westminster areas. Managed a team of 2 employees and maintained relationships with approximately 20 clients. Demonstrated entrepreneurial skills by growing and sustaining the business for 4 consecutive seasons (April-November).
+              </div>
+            </div>
+            
+            <div class="timeline-item">
+              <div class="timeline-date">Summer 2022</div>
+              <div class="timeline-title">Engineering Intern</div>
+              <div class="timeline-company">Permontes Group • Longmont, Colorado</div>
+              <div class="timeline-description">
+                Gained hands-on experience in engineering processes including AutoCAD fundamentals, project documentation, and submittal organization. Collaborated with professional engineers and contributed to various technical projects while developing industry-standard practices.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="page-section">
+          <h2 class="section-title">Skills</h2>
+          <div class="skills-category">
+            <h3>Technical Skills</h3>
+            <div class="skills-list">
+              <span class="skill-tag">Excel</span>
+              <span class="skill-tag">PowerPoint</span>
+              <span class="skill-tag">SQL</span>
+              <span class="skill-tag">Earnix Modeling</span>
+              <span class="skill-tag">AutoCAD</span>
+              <span class="skill-tag">Data Analytics</span>
+            </div>
+          </div>
+          
+          <div class="skills-category">
+            <h3>Business Skills</h3>
+            <div class="skills-list">
+              <span class="skill-tag">Communication Strategy</span>
+              <span class="skill-tag">Team Leadership</span>
+              <span class="skill-tag">Project Management</span>
+              <span class="skill-tag">Client Relations</span>
+              <span class="skill-tag">Business Operations</span>
+              <span class="skill-tag">Financial Analysis</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="page-section">
+          <h2 class="section-title">Contact</h2>
+          <div class="contact-form">
+            <h3 style="color: var(--text-primary); margin-bottom: 25px; text-align: center; font-size: 1.4rem;">Get In Touch</h3>
+            <form onsubmit="handleSubmit(event)">
+              <div class="form-group">
+                <label for="name">Name *</label>
+                <input type="text" id="name" name="name" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="subject">Subject</label>
+                <input type="text" id="subject" name="subject">
+              </div>
+              
+              <div class="form-group">
+                <label for="message">Message *</label>
+                <textarea id="message" name="message" required placeholder="Tell me about your project or opportunity..."></textarea>
+              </div>
+              
+              <button type="submit" class="submit-btn">
+                <i class="fas fa-paper-plane"></i> Send Message
+              </button>
+            </form>
+            
+            <div class="social-links">
+              <a href="mailto:mleybacale@gmail.com" title="Email">
+                <i class="fas fa-envelope"></i>
+              </a>
+              <a href="https://www.linkedin.com/in/mitchell-leyba-calee-9a5790294" target="_blank" title="LinkedIn">
+                <i class="fab fa-linkedin"></i>
+              </a>
+              <a href="https://github.com/MitchellLeybaCale" target="_blank" title="GitHub">
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+          </div>
+        </section>
+        
+      </div>
+    </main>
+  </div>
+
+  <a href="#" class="download-resume" onclick="downloadResume()">
+    <i class="fas fa-download"></i> Download Resume
+  </a>
+
+  <script src="script.js"></script>
+</body>
+</html>

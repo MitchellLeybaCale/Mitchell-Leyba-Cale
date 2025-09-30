@@ -1,0 +1,103 @@
+// Navigation functionality
+function showSection(sectionName) {
+  // Hide all sections
+  document.querySelectorAll('.page-section').forEach(section => {
+    section.classList.remove('active');
+  });
+  
+  // Show selected section
+  document.getElementById(sectionName).classList.add('active');
+  
+  // Update active nav item
+  document.querySelectorAll('.nav-item').forEach(item => {
+    item.classList.remove('active');
+  });
+  event.target.classList.add('active');
+}
+
+// Theme toggle
+function toggleTheme() {
+  const html = document.documentElement;
+  const themeIcon = document.getElementById('theme-icon');
+  const themeText = document.getElementById('theme-text');
+  
+  if (html.getAttribute('data-theme') === 'dark') {
+    html.removeAttribute('data-theme');
+    themeIcon.className = 'fas fa-moon';
+    themeText.textContent = 'Dark Mode';
+    localStorage.setItem('theme', 'light');
+  } else {
+    html.setAttribute('data-theme', 'dark');
+    themeIcon.className = 'fas fa-sun';
+    themeText.textContent = 'Light Mode';
+    localStorage.setItem('theme', 'dark');
+  }
+}
+
+// Load saved theme
+document.addEventListener('DOMContentLoaded', function() {
+  const savedTheme = localStorage.getItem('theme');
+  const themeIcon = document.getElementById('theme-icon');
+  const themeText = document.getElementById('theme-text');
+  
+  if (savedTheme === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    themeIcon.className = 'fas fa-sun';
+    themeText.textContent = 'Light Mode';
+  }
+});
+
+// Download resume function
+function downloadResume() {
+  const resumeContent = `MITCHELL LEYBA CALE
+Finance & Data Analytics Professional
+Email: mleybacale@gmail.com
+LinkedIn: linkedin.com/in/mitchell-leyba-calee-9a5790294
+GitHub: github.com/MitchellLeybaCale
+
+EDUCATION
+University of Colorado Boulder - Leeds School of Business
+BS in Business Administration - Finance & Data Analytics
+
+EXPERIENCE
+Business Owner | Lawn Care Services (2020-2023)
+- Managed 20+ clients across Arvada, Lakewood, and Westminster
+- Led team of 2 employees for 4 successful seasons
+- Demonstrated entrepreneurship and client relationship management
+
+Engineering Intern | Permontes Group (Summer 2022)
+- Learned AutoCAD fundamentals and engineering processes
+- Assisted with project documentation and submittal organization
+- Collaborated with professional engineering team
+
+SKILLS
+Technical: Excel, PowerPoint, SQL, Earnix Modeling, AutoCAD, Data Analytics
+Business: Communication Strategy, Team Leadership, Project Management`;
+
+  const blob = new Blob([resumeContent], { type: 'text/plain' });
+  const url = window.URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'Mitchell_Leyba_Cale_Resume.txt';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  window.URL.revokeObjectURL(url);
+}
+
+// Handle form submission
+function handleSubmit(event) {
+  event.preventDefault();
+  
+  const formData = new FormData(event.target);
+  const name = formData.get('name');
+  const email = formData.get('email');
+  const subject = formData.get('subject');
+  const message = formData.get('message');
+  
+  const mailtoLink = `mailto:mleybacale@gmail.com?subject=${encodeURIComponent(subject || 'Contact from Portfolio')}&body=${encodeURIComponent(`From: ${name} (${email})\n\n${message}`)}`;
+  
+  window.location.href = mailtoLink;
+  alert('Opening your email client...');
+  event.target.reset();
+}
